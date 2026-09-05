@@ -20,9 +20,9 @@ Built with **YOLOv8 + ByteTrack + Streamlit**.
 
 ## Quick Start
 
-`ash
+```bash
 # 1. Clone
-git clone https://github.com/<your-username>/TacticScope.git
+git clone https://github.com/shisht04/TacticScope.git
 cd TacticScope
 
 # 2. Create venv + install deps
@@ -34,20 +34,23 @@ pip install -r requirements.txt
 
 # 3. Run
 streamlit run app.py
-`
+```
 
-Then open http://localhost:8501 and upload a short football clip (10–20 sec, 720p+).
+Then open `http://localhost:8501` and upload a short football clip (10–20 sec, 720p+).
 
-> **Note:** YOLOv8n weights (yolov8n.pt) auto-download on first run (~6 MB). Needs internet access once.
+> **Note:** YOLOv8n weights (`yolov8n.pt`) auto-download on first run (~6 MB). Needs internet access once.
 
 ---
 
 ## Project Structure
 
-`
+```
 tacticscope/
 ├── app.py                  # Streamlit app (all 5 views)
 ├── requirements.txt
+├── tests/
+│   ├── test_pipeline.py    # Pytest test suite (one test per pipeline stage)
+│   └── check_v2.py         # Manual smoke-test script
 ├── data/
 │   ├── videos/             # Put your input clips here (.gitkeep included)
 │   └── output/             # Generated files land here (.gitkeep included)
@@ -57,16 +60,27 @@ tacticscope/
     ├── team_classifier.py   # Step 3: Jersey colour k-means
     ├── speed_estimator.py   # Step 4: Speed + sprint detection
     └── tactical_insights.py # Step 5: Compactness, pressing, formation
-`
+```
+
+---
+
+## Running Tests
+
+Tests require pipeline output to exist first (run `detect_and_track.py` once):
+
+```bash
+python src/detect_and_track.py --video data/videos/sample.mp4
+python -m pytest tests/test_pipeline.py -v
+```
 
 ---
 
 ## Tech Stack
 
 - **Detection**: [Ultralytics YOLOv8n](https://github.com/ultralytics/ultralytics) (COCO person class)
-- **Tracking**: ByteTrack (via model.track())
+- **Tracking**: ByteTrack (via `model.track()`)
 - **Clustering**: scikit-learn KMeans (k=3: Team A, Team B, Officials)
-- **Dashboard**: Streamlit ≥ 1.31 with Plotly
+- **Dashboard**: Streamlit 1.60.0 with Plotly — provides `st.pills`, `st.html`, `st.segmented_control`
 - **Speed**: Pixel-space px/s with rolling smoothing (real-world km/h needs homography calibration — noted as stretch goal)
 
 ---
@@ -77,6 +91,46 @@ tacticscope/
 - **Pixel units**: Speed/distance are in pixels, not metres. Rankings are still valid relatively.
 - **Team classifier**: Works best when teams have clearly different jersey colours. k=3 separates officials automatically.
 - **CPU speed**: ~2–5 FPS on CPU for yolov8n — keep demo clips ≤ 20 sec.
+
+---
+
+## Future Work
+
+### Appearance-based Re-Identification (ReID)
+
+The current ID-switch limitation is the most impactful unsolved problem in the pipeline.
+
+When two players cross paths or one is briefly occluded, ByteTrack can assign a new track ID to a player it already knew about — because the matching relies on bounding box overlap (IoU), not on what the player looks like. The result: one real player appears as two separate track IDs in the analytics, which inflates track counts and splits trajectories/stats.
+
+The concrete next step would be to integrate an **appearance-based Re-Identification model** alongside ByteTrack:
+
+- **Approach**: Use a lightweight OSNet-based ReID model (e.g. from [torchreid](https://github.com/KaiyangZhou/deep-person-reid)) to extract a feature embedding from each detected player crop, then match new detections to existing tracks by combining IoU *and* embedding similarity. When IoU fails, the appearance vector can still close the association.
+- **Integration point**: `src/detect_and_track.py` — after the ByteTrack assignment step, add a ReID re-association pass over "lost" tracks before they are marked as new IDs.
+- **Expected impact**: Significantly fewer spurious track ID splits in long clips or clips with dense player interaction. Downstream stats (distance, speed, formation) would reflect individual players more accurately.
+
+This is **future work** — it is not currently implemented in this codebase.
+
+---
+
+## Results / Sample Output
+
+> **Fill this section in after running the pipeline on your clip.**
+> All values below are TBD placeholders — do not treat them as benchmarks.
+
+| Metric | Sample Value |
+|---|---|
+| Players tracked (Team A) | TBD |
+| Players tracked (Team B) | TBD |
+| Officials detected | TBD |
+| Top speed (px/s) | TBD |
+| Average speed (px/s) | TBD |
+| Sprint bursts (Team A) | TBD |
+| Sprint bursts (Team B) | TBD |
+| Estimated formation — Team A | TBD (e.g. ~4-3-3) |
+| Estimated formation — Team B | TBD (e.g. ~4-4-2) |
+| Key tactical moments detected | TBD |
+| Clip duration analysed | TBD sec |
+| Processing time (CPU) | TBD sec |
 
 ---
 

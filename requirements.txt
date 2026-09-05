@@ -1,9 +1,22 @@
-ultralytics>=8.1.0
-opencv-python>=4.9.0
-numpy>=1.24.0
-streamlit>=1.31.0
-pandas>=2.0.0
-scikit-learn>=1.4.0
-matplotlib>=3.7.0
-scipy>=1.11.0
-plotly>=5.18.0
+﻿# TacticScope v2.0 — pinned dependencies
+# Generated from pip freeze against the tested venv.
+# Streamlit 1.60.0 provides st.pills, st.html, and st.segmented_control
+# (all introduced before 1.31; confirmed present at 1.60.0).
+
+# ── Core pipeline ─────────────────────────────────────────────────────────────
+ultralytics==8.4.104
+opencv-python==5.0.0.93
+numpy==2.5.1
+
+# ── Dashboard ─────────────────────────────────────────────────────────────────
+streamlit==1.60.0
+plotly==6.9.0
+
+# ── Analytics / ML ───────────────────────────────────────────────────────────
+pandas==3.0.3
+scikit-learn==1.9.0
+matplotlib==3.11.1
+scipy==1.18.0
+
+# ── Tests ────────────────────────────────────────────────────────────────────
+pytest==9.1.1
