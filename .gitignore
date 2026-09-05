@@ -1,0 +1,47 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Data — generated outputs (too large for git; keep .gitkeep placeholders)
+data/output/*.mp4
+data/output/*.csv
+data/output/*.png
+data/output/heatmaps/
+data/output/thumbs/
+
+# Videos (large binary files)
+data/videos/*.mp4
+data/videos/*.mov
+data/videos/*.avi
+data/videos/*.mkv
+data/videos/*.webm
+
+# YOLOv8 weights (downloaded automatically on first run)
+*.pt
+*.onnx
+
+# Streamlit
+.streamlit/secrets.toml
+
+# IDE / OS
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+
+# Misc
+*.log
+*.tmp
