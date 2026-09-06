@@ -167,9 +167,11 @@ This is **future work** — it is not currently implemented in this codebase.
 | Clip duration analysed | 91.7 sec |
 | Processing time (CPU) | TBD |
 
+---
+
 ## NOTE
 
-Because this demo clip used broadcast (TV-style) footage rather than a fixed tactical camera, frequent camera cuts and player occlusion inflated track counts well above the real 22 on-pitch players — a direct symptom of the ID-switch limitation described above, which the planned ReID integration is meant to fix.
+-Because this demo clip used broadcast (TV-style) footage rather than a fixed tactical camera, frequent camera cuts and player occlusion inflated track counts well above the real 22 on-pitch players — a direct symptom of the ID-switch limitation described above, which the planned ReID integration is meant to fix.
 ---
 
 Made with ❤️ by shisht
