@@ -18,6 +18,41 @@ Built with **YOLOv8 + ByteTrack + Streamlit**.
 
 ---
 
+## Screenshots
+
+### Match Overview
+Score, key-frame previews pulled from the clip, and an auto-generated match story — "no AI guesswork," just tracking data.
+
+![Match Overview](assets/match-overview.png)
+
+### Player Explorer
+Click any player on the pitch to pull up their live stats, trajectory, and activity-zone heatmap.
+
+![Player Explorer](assets/player-explorer.png)
+
+### Team Battle
+Head-to-head comparison across total distance, top speed, average speed, sprint bursts, compactness, and pressing distance.
+
+![Team Battle](assets/team-battle.png)
+
+### Tactical Story
+Estimated formation and territorial control, derived purely from average player positions — plus compactness and pressing intensity tracked frame-by-frame across the match.
+
+![Tactical Story](assets/tactical-story.png)
+![Compactness & Pressing Over Time](assets/compactness-timeline.png)
+
+### Full Roster
+All 154 tracked players in a match, filterable by team, goalkeeper, or referee.
+
+![Full Roster](assets/full-roster.png)
+
+### Player Deep Dive
+Per-player trajectory, activity-zone heatmap, and speed-over-time chart with sprint threshold marked.
+
+![Player Deep Dive](assets/player-deepdive.png)
+
+---
+
 ## Quick Start
 
 ```bash
@@ -48,6 +83,7 @@ Then open `http://localhost:8501` and upload a short football clip (10–20 sec,
 tacticscope/
 ├── app.py                  # Streamlit app (all 5 views)
 ├── requirements.txt
+├── assets/                 # README screenshots
 ├── tests/
 │   ├── test_pipeline.py    # Pytest test suite (one test per pipeline stage)
 │   └── check_v2.py         # Manual smoke-test script
