@@ -150,23 +150,22 @@ This is **future work** — it is not currently implemented in this codebase.
 
 ## Results / Sample Output
 
-> **Fill this section in after running the pipeline on your clip.**
-> All values below are TBD placeholders — do not treat them as benchmarks.
+> Sample run on a Manchester City vs Chelsea highlight clip.
 
 | Metric | Sample Value |
 |---|---|
-| Players tracked (Team A) | TBD |
-| Players tracked (Team B) | TBD |
-| Officials detected | TBD |
-| Top speed (px/s) | TBD |
-| Average speed (px/s) | TBD |
-| Sprint bursts (Team A) | TBD |
-| Sprint bursts (Team B) | TBD |
-| Estimated formation — Team A | TBD (e.g. ~4-3-3) |
-| Estimated formation — Team B | TBD (e.g. ~4-4-2) |
+| Players tracked (Team A) | 84 |
+| Players tracked (Team B) | 61 |
+| Officials detected | 9 |
+| Top speed (px/s) | 4336 |
+| Average speed (px/s) | 218 (Team A) / 225 (Team B) |
+| Sprint bursts (Team A) | 244 |
+| Sprint bursts (Team B) | 224 |
+| Estimated formation — Team A | ~1-1-1 |
+| Estimated formation — Team B | ~1-1-1 |
 | Key tactical moments detected | TBD |
-| Clip duration analysed | TBD sec |
-| Processing time (CPU) | TBD sec |
+| Clip duration analysed | 91.7 sec |
+| Processing time (CPU) | TBD |
 
 ---
 
