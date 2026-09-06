@@ -21,7 +21,7 @@ Built with **YOLOv8 + ByteTrack + Streamlit**.
 ## Screenshots
 
 ### Home Page
-![Home Page]<img width="1136" height="841" alt="image" src="https://github.com/user-attachments/assets/bd0bdd18-9a3c-4aca-b28e-ae66beaad4a3" />
+<img width="1136" height="841" alt="image" src="https://github.com/user-attachments/assets/bd0bdd18-9a3c-4aca-b28e-ae66beaad4a3" />
 
 ### Match Overview
 Score, key-frame previews pulled from the clip, and an auto-generated match story — "no AI guesswork," just tracking data.
